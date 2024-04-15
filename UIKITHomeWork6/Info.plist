@@ -4,9 +4,9 @@
 <dict>
 	<key>UIAppFonts</key>
 	<array>
-		<string>FiraGo-SemiBold.ttf</string>
-		<string>FiraGo-Medium.ttf</string>
-		<string>FiraGo-Regular.ttf</string>
+		<string>FiraGO-SemiBold.ttf</string>
+		<string>FiraGO-Medium.ttf</string>
+		<string>FiraGO-Regular.ttf</string>
 	</array>
 	<key>UIApplicationSceneManifest</key>
 	<dict>

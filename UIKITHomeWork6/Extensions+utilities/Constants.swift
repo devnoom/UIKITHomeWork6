@@ -21,4 +21,8 @@ struct icons {
     
 }
 
+struct fonts {
+    static let semiBold = "FiraGO-SemiBold"
+}
+
 

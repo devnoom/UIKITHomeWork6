@@ -16,6 +16,7 @@ class onboardingController: UIViewController {
         startButton.backgroundColor = .blue
         
         
+        
         return startButton
     }()
     let startDescription: UIStackView = {
@@ -73,19 +74,19 @@ class onboardingController: UIViewController {
     func configureStackOfDescription() {
         let first = UILabel()
         first.text = "შედი"
-        first.font = .systemFont(ofSize: 30)
+        first.font = UIFont(name: "FiraGO-SemiBold", size: 30)
         first.textColor = .white
         let second = UILabel()
         second.text = "აპლიკაციაში"
-        second.font = .systemFont(ofSize: 30)
+        second.font = UIFont(name: "FiraGO-SemiBold", size: 30)
         second.textColor = .white
         let third = UILabel()
         third.text = "და იწუწუნე"
-        third.font = .systemFont(ofSize: 30)
+        third.font = UIFont(name: "FiraGO-SemiBold", size: 30)
         third.textColor = .white
         let fourth = UILabel()
         fourth.text = "რამდენიც გინდა"
-        fourth.font = .systemFont(ofSize: 30)
+        fourth.font = UIFont(name: "FiraGO-SemiBold", size: 30)
         fourth.textColor = .white
         
         startDescription.addArrangedSubview(first)

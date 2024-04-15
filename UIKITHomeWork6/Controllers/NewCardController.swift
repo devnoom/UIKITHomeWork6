@@ -9,7 +9,7 @@ class NewCardController: UIViewController {
     let choice: UILabel = {
         let choice = UILabel()
         choice.text = "აირჩიეთ აიქონი"
-        
+        choice.font = UIFont(name: "FiraGO-Medium", size: 20)
         choice.textColor = .white
         return choice
     }()
@@ -93,16 +93,16 @@ class NewCardController: UIViewController {
         let cardTittle = UILabel()
         cardTittle.text = "სათაური"
         cardTittle.textColor = .white
-        cardTittle.font = UIFont(name: "FiraGo-SemiBold", size: 35)
+        cardTittle.font = UIFont(name: "FiraGo-SemiBold", size: 20)
         
         tittleText.borderStyle = .bezel
         tittleText.placeholder = "მაგ: პანიკა, დახმარება მჭირდება"
         tittleText.layer.cornerRadius = tittleText.frame.height / 2
-        tittleText.font = .systemFont(ofSize: 12)
+        tittleText.font = UIFont(name: "FiraGO-Medium", size: 20)
         
         let description = UILabel()
         description.text = "აღწერა"
-        description.font = UIFont(name: "FiraGo-Regular", size: 20)
+        description.font = UIFont(name: "FiraGO-Medium", size: 20)
         description.textColor = .white
         
         descriptionText.borderStyle = .bezel

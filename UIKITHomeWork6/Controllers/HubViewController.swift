@@ -15,6 +15,7 @@ class HubViewController: UIViewController {
         addCardButton.setTitle("ახალი წუწუნ ბარათის დამატება", for: .normal)
         addCardButton.layer.cornerRadius = 23
         addCardButton.backgroundColor = .blue
+        
     return addCardButton
     }()
     var collectioView: UICollectionView = {
