@@ -20,3 +20,5 @@ struct icons {
     static let purpleIcon = UIImage(named: "purpleIcon")
     
 }
+
+

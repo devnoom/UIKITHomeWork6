@@ -1,20 +1,15 @@
-//
-//  NewCardController.swift
-//  UIKITHomeWork6
-//
-//  Created by MacBook Air on 14.04.24.
-//
-
 import UIKit
 
 class NewCardController: UIViewController {
-    
+    var selectedIcon: UIImage?
+
     let imageView = UIImageView()
     let tittleText = UITextField()
     let descriptionText = UITextField()
     let choice: UILabel = {
         let choice = UILabel()
         choice.text = "აირჩიეთ აიქონი"
+        
         choice.textColor = .white
         return choice
     }()
@@ -27,14 +22,10 @@ class NewCardController: UIViewController {
     }()
     let cardInfo: UIStackView = {
         let cardInfo = UIStackView()
-        //cardInfo.backgroundColor = .red
-        
         return cardInfo
     }()
     let cardICons: UIStackView = {
         let cardIcons = UIStackView()
-        //cardIcons.backgroundColor = .blue
-        
         return cardIcons
     }()
     
@@ -43,11 +34,8 @@ class NewCardController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        //view.backgroundColor = .cyan
         setupUI()
-        // Do any additional setup after loading the view.
     }
-    
     
     func setupUI(){
         imageView.image = UIImage(named: "backGround")
@@ -93,36 +81,44 @@ class NewCardController: UIViewController {
             cardICons.heightAnchor.constraint(equalToConstant: 50),
             
             tittleText.heightAnchor.constraint(equalToConstant: 50),
-            descriptionText.heightAnchor.constraint(equalToConstant: 50)
-            
+            tittleText.leadingAnchor.constraint(equalTo: cardInfo.leadingAnchor),
+            tittleText.trailingAnchor.constraint(equalTo: cardInfo.trailingAnchor),
+            descriptionText.heightAnchor.constraint(equalToConstant: 50),
+            descriptionText.leadingAnchor.constraint(equalTo: cardInfo.leadingAnchor),
+            descriptionText.trailingAnchor.constraint(equalTo: cardInfo.trailingAnchor)
         ])
     }
+    
     func configureCardInfo() {
         let cardTittle = UILabel()
         cardTittle.text = "სათაური"
         cardTittle.textColor = .white
+        cardTittle.font = UIFont(name: "FiraGo-SemiBold", size: 35)
         
         tittleText.borderStyle = .bezel
         tittleText.placeholder = "მაგ: პანიკა, დახმარება მჭირდება"
         tittleText.layer.cornerRadius = tittleText.frame.height / 2
+        tittleText.font = .systemFont(ofSize: 12)
         
         let description = UILabel()
         description.text = "აღწერა"
+        description.font = UIFont(name: "FiraGo-Regular", size: 20)
         description.textColor = .white
         
         descriptionText.borderStyle = .bezel
         descriptionText.placeholder = "მაგ: ფიგმამ გამიჭედა და ვინმემ გამომიგზავნეთ"
         descriptionText.layer.cornerRadius = 25
+        descriptionText.font = .systemFont(ofSize: 12)
         
         cardInfo.axis = .vertical
         cardInfo.distribution = .equalSpacing
-        
         
         cardInfo.addArrangedSubview(cardTittle)
         cardInfo.addArrangedSubview(tittleText)
         cardInfo.addArrangedSubview(description)
         cardInfo.addArrangedSubview(descriptionText)
     }
+    
     func configureCardIcons() {
         cardICons.axis = .horizontal
         cardICons.distribution = .fillEqually
@@ -130,31 +126,54 @@ class NewCardController: UIViewController {
         
         let greenIcon = UIImageView()
         greenIcon.image = UIImage(named: "greenIcon")
-        let yellowIcon = UIImageView()
-        yellowIcon.image = UIImage(named: "yellowIcon")
+        greenIcon.isUserInteractionEnabled = true
+        greenIcon.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(iconTapped(_:))))
         let redIcon = UIImageView()
         redIcon.image = UIImage(named: "redIcon")
+        redIcon.isUserInteractionEnabled = true
+        redIcon.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(iconTapped(_:))))
+        let yellowIcon = UIImageView()
+        yellowIcon.image = UIImage(named: "yellowIcon")
+        yellowIcon.isUserInteractionEnabled = true
+        yellowIcon.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(iconTapped(_:))))
         let purpleIcon = UIImageView()
         purpleIcon.image = UIImage(named: "purpleIcon")
+        purpleIcon.isUserInteractionEnabled = true
+        purpleIcon.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(iconTapped(_:))))
         
-        cardICons.addArrangedSubview(redIcon)
-        cardICons.addArrangedSubview(purpleIcon)
         cardICons.addArrangedSubview(greenIcon)
+        cardICons.addArrangedSubview(redIcon)
         cardICons.addArrangedSubview(yellowIcon)
-      
-        
-        
+        cardICons.addArrangedSubview(purpleIcon)
     }
+
+    @objc func iconTapped(_ sender: UITapGestureRecognizer) {
+        guard let tappedIcon = sender.view as? UIImageView else { return }
+      
+        for case let icon as UIImageView in cardICons.arrangedSubviews {
+            icon.layer.borderWidth = 0
+        }
+        
+        tappedIcon.layer.borderWidth = 2
+        tappedIcon.layer.borderColor = UIColor.blue.cgColor
+      
+        selectedIcon = tappedIcon.image
+    }
+
     @objc func toAddNewCardController() {
         let newTitle = tittleText.text ?? ""
         let newDescription = descriptionText.text ?? ""
-        // You might want to pass the icon as well if needed
-        hubView?.addNewCard(Cards(tittle: newTitle, description: newDescription, icon: icons.redIcon!))
+        
+        guard let selectedIcon = selectedIcon else {
+         
+            return
+        }
+       
+        hubView?.addNewCard(Cards(tittle: newTitle, description: newDescription, icon: selectedIcon))
         dismiss(animated: true, completion: nil)
     }
-
-
 }
+
 #Preview {
     NewCardController()
 }

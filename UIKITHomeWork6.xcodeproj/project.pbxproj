@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D0C49C112BCD866700A076BF /* FiraGO-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D0C49C0F2BCD866700A076BF /* FiraGO-Medium.ttf */; };
+		D0C49C122BCD866700A076BF /* FiraGO-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D0C49C102BCD866700A076BF /* FiraGO-Regular.ttf */; };
+		D0C49C142BCD87CC00A076BF /* FiraGO-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D0C49C132BCD87CC00A076BF /* FiraGO-SemiBold.ttf */; };
 		D0FB9A6E2BCC06B5008FBFCF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0FB9A6D2BCC06B5008FBFCF /* AppDelegate.swift */; };
 		D0FB9A702BCC06B5008FBFCF /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0FB9A6F2BCC06B5008FBFCF /* SceneDelegate.swift */; };
 		D0FB9A772BCC06B7008FBFCF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D0FB9A762BCC06B6008FBFCF /* Assets.xcassets */; };
@@ -21,6 +24,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		D0C49C0F2BCD866700A076BF /* FiraGO-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "FiraGO-Medium.ttf"; sourceTree = "<group>"; };
+		D0C49C102BCD866700A076BF /* FiraGO-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "FiraGO-Regular.ttf"; sourceTree = "<group>"; };
+		D0C49C132BCD87CC00A076BF /* FiraGO-SemiBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "FiraGO-SemiBold.ttf"; sourceTree = "<group>"; };
 		D0FB9A6A2BCC06B5008FBFCF /* UIKITHomeWork6.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = UIKITHomeWork6.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D0FB9A6D2BCC06B5008FBFCF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D0FB9A6F2BCC06B5008FBFCF /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -47,6 +53,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		D0C49C0E2BCD863C00A076BF /* Font */ = {
+			isa = PBXGroup;
+			children = (
+				D0C49C132BCD87CC00A076BF /* FiraGO-SemiBold.ttf */,
+				D0C49C0F2BCD866700A076BF /* FiraGO-Medium.ttf */,
+				D0C49C102BCD866700A076BF /* FiraGO-Regular.ttf */,
+			);
+			path = Font;
+			sourceTree = "<group>";
+		};
 		D0FB9A612BCC06B5008FBFCF = {
 			isa = PBXGroup;
 			children = (
@@ -66,6 +82,7 @@
 		D0FB9A6C2BCC06B5008FBFCF /* UIKITHomeWork6 */ = {
 			isa = PBXGroup;
 			children = (
+				D0C49C0E2BCD863C00A076BF /* Font */,
 				D0FB9A942BCC6881008FBFCF /* Extensions+utilities */,
 				D0FB9A8D2BCC679E008FBFCF /* Cell */,
 				D0FB9A892BCC66E0008FBFCF /* Controllers */,
@@ -173,7 +190,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				D0FB9A772BCC06B7008FBFCF /* Assets.xcassets in Resources */,
+				D0C49C142BCD87CC00A076BF /* FiraGO-SemiBold.ttf in Resources */,
+				D0C49C122BCD866700A076BF /* FiraGO-Regular.ttf in Resources */,
 				D0FB9A7A2BCC06B7008FBFCF /* Base in Resources */,
+				D0C49C112BCD866700A076BF /* FiraGO-Medium.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

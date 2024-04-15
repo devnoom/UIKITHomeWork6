@@ -14,7 +14,7 @@ class HubCardViewCell: UICollectionViewCell {
         label.translatesAutoresizingMaskIntoConstraints = false
         label.textAlignment = .center
         label.numberOfLines = 3
-        label.font = UIFont.boldSystemFont(ofSize: 15) // Increased font size
+        label.font = UIFont.boldSystemFont(ofSize: 15)
         return label
     }()
     
@@ -24,7 +24,6 @@ class HubCardViewCell: UICollectionViewCell {
         label.textAlignment = .center
         label.numberOfLines = 4
         label.font = UIFont.systemFont(ofSize: 10)
-        //label.backgroundColor = .red
         return label
     }()
     
