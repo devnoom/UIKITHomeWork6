@@ -8,10 +8,14 @@
 import UIKit
 
 class NewCardController: UIViewController {
+    
     let imageView = UIImageView()
+    let tittleText = UITextField()
+    let descriptionText = UITextField()
     let choice: UILabel = {
         let choice = UILabel()
         choice.text = "აირჩიეთ აიქონი"
+        choice.textColor = .white
         return choice
     }()
     let addCard: UIButton = {
@@ -23,16 +27,20 @@ class NewCardController: UIViewController {
     }()
     let cardInfo: UIStackView = {
         let cardInfo = UIStackView()
-        cardInfo.backgroundColor = .red
+        //cardInfo.backgroundColor = .red
         
         return cardInfo
     }()
     let cardICons: UIStackView = {
         let cardIcons = UIStackView()
-        cardIcons.backgroundColor = .blue
+        //cardIcons.backgroundColor = .blue
         
         return cardIcons
     }()
+    
+    var hubView: HubViewController?
+    var cellview: HubCardViewCell?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         //view.backgroundColor = .cyan
@@ -56,6 +64,9 @@ class NewCardController: UIViewController {
         choice.translatesAutoresizingMaskIntoConstraints = false
         
         configureCardInfo()
+        configureCardIcons()
+        
+        addCard.addTarget(self, action: #selector(toAddNewCardController), for: .touchUpInside)
         
         NSLayoutConstraint.activate([
             imageView.topAnchor.constraint(equalTo: view.topAnchor),
@@ -71,57 +82,78 @@ class NewCardController: UIViewController {
             cardInfo.topAnchor.constraint(equalTo: view.topAnchor, constant: 90),
             cardInfo.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
             cardInfo.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
-            cardInfo.heightAnchor.constraint(equalToConstant: 150),
+            cardInfo.heightAnchor.constraint(equalToConstant: 190),
             
             choice.topAnchor.constraint(equalTo: cardInfo.bottomAnchor, constant: 50),
             choice.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
             
             cardICons.topAnchor.constraint(equalTo: choice.bottomAnchor, constant: 20),
-            cardICons.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
-            cardICons.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
-            cardICons.heightAnchor.constraint(equalToConstant: 70)
+            cardICons.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 50),
+            cardICons.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -50),
+            cardICons.heightAnchor.constraint(equalToConstant: 50),
+            
+            tittleText.heightAnchor.constraint(equalToConstant: 50),
+            descriptionText.heightAnchor.constraint(equalToConstant: 50)
+            
         ])
     }
     func configureCardInfo() {
-        let tittle = UILabel()
-        tittle.text = "სათაური"
-        let tittleText = UITextField()
+        let cardTittle = UILabel()
+        cardTittle.text = "სათაური"
+        cardTittle.textColor = .white
+        
         tittleText.borderStyle = .bezel
+        tittleText.placeholder = "მაგ: პანიკა, დახმარება მჭირდება"
+        tittleText.layer.cornerRadius = tittleText.frame.height / 2
+        
         let description = UILabel()
         description.text = "აღწერა"
-        let descriptionText = UITextField()
+        description.textColor = .white
+        
         descriptionText.borderStyle = .bezel
+        descriptionText.placeholder = "მაგ: ფიგმამ გამიჭედა და ვინმემ გამომიგზავნეთ"
+        descriptionText.layer.cornerRadius = 25
         
         cardInfo.axis = .vertical
         cardInfo.distribution = .equalSpacing
         
         
-        cardInfo.addArrangedSubview(tittle)
+        cardInfo.addArrangedSubview(cardTittle)
         cardInfo.addArrangedSubview(tittleText)
         cardInfo.addArrangedSubview(description)
         cardInfo.addArrangedSubview(descriptionText)
     }
     func configureCardIcons() {
-        struct IconInfo {
-            let imageName: String
-        }
-        let icons: [IconInfo] = [
-            IconInfo(imageName: "redIcon"),
-            IconInfo(imageName: "yellowIcon"),
-            // Add more image names as needed
-        ]
-        
-        let first = UIImage(named: "redIcon")
         cardICons.axis = .horizontal
-        cardICons.distribution = .equalSpacing
+        cardICons.distribution = .fillEqually
+        cardICons.spacing = 35
         
-        for iconInfo in icons {
-            if let image = UIImage(named: iconInfo.imageName) {
-                let imageView = UIImageView(image: image)
-                cardICons.addArrangedSubview(imageView)
-            }
-        }
+        let greenIcon = UIImageView()
+        greenIcon.image = UIImage(named: "greenIcon")
+        let yellowIcon = UIImageView()
+        yellowIcon.image = UIImage(named: "yellowIcon")
+        let redIcon = UIImageView()
+        redIcon.image = UIImage(named: "redIcon")
+        let purpleIcon = UIImageView()
+        purpleIcon.image = UIImage(named: "purpleIcon")
+        
+        cardICons.addArrangedSubview(redIcon)
+        cardICons.addArrangedSubview(purpleIcon)
+        cardICons.addArrangedSubview(greenIcon)
+        cardICons.addArrangedSubview(yellowIcon)
+      
+        
+        
     }
+    @objc func toAddNewCardController() {
+        let newTitle = tittleText.text ?? ""
+        let newDescription = descriptionText.text ?? ""
+        // You might want to pass the icon as well if needed
+        hubView?.addNewCard(Cards(tittle: newTitle, description: newDescription, icon: icons.redIcon!))
+        dismiss(animated: true, completion: nil)
+    }
+
+
 }
 #Preview {
     NewCardController()
